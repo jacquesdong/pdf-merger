@@ -39,7 +39,6 @@ struct Program: ParsableCommand {
     var outputFile: String = "merged.pdf"
 
     func run() throws {
-
         do {
             try mergePDFs(inputPaths: inputFiles, outputPath: outputFile)
             print("Success: \(outputFile) created.")
