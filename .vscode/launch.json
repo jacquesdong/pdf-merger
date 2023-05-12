@@ -7,9 +7,9 @@
                 "swift"
             ],
             "name": "Debug",
-            "program": "${workspaceFolder:merge}/.build/debug/merge",
+            "program": "${workspaceFolder}/.build/debug/merge",
             "args": [],
-            "cwd": "${workspaceFolder:merge}",
+            "cwd": "${workspaceFolder}",
             "preLaunchTask": "swift: Build Debug merge"
         },
         {
@@ -19,9 +19,9 @@
                 "swift"
             ],
             "name": "Release",
-            "program": "${workspaceFolder:merge}/.build/release/merge",
+            "program": "${workspaceFolder}/.build/release/merge",
             "args": [],
-            "cwd": "${workspaceFolder:merge}",
+            "cwd": "${workspaceFolder}",
             "preLaunchTask": "swift: Build Release merge"
         }
     ]
