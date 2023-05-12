@@ -1,8 +1,11 @@
 // The Swift Programming Language
 // https://docs.swift.org/swift-book
 
+import Foundation
+
+import ArgumentParser
 import PDFKit
-    
+
 
 func mergePDFs(inputPaths: [String], outputPath: String) throws {
     // Create a new PDFDocument to hold the merged PDFs
@@ -16,6 +19,8 @@ func mergePDFs(inputPaths: [String], outputPath: String) throws {
                     mergedPDF.insert(page, at: mergedPDF.pageCount)
                 }
             }
+
+            print("Info: \(path) inserted")
         } else {
             throw NSError(domain: "com.example.pdfkit", code: 1, userInfo: [NSLocalizedDescriptionKey: "Failed to create PDF document from file at path \(path)"])
         }
@@ -25,10 +30,21 @@ func mergePDFs(inputPaths: [String], outputPath: String) throws {
     mergedPDF.write(toFile: outputPath)
 }
 
-do {
-    let outputPath = "merged.pdf"
-    try mergePDFs(inputPaths: Array(CommandLine.arguments[1...]), outputPath: outputPath)
-    print("Success: \(outputPath) created.")
-} catch let error {
-    print("Error: \(error.localizedDescription)")
+@main
+struct Program: ParsableCommand {
+    @Argument(help: "Input files")
+    var inputFiles: [String]
+
+    @Option(name: .shortAndLong, help: "Output file")
+    var outputFile: String = "merged.pdf"
+
+    func run() throws {
+
+        do {
+            try mergePDFs(inputPaths: inputFiles, outputPath: outputFile)
+            print("Success: \(outputFile) created.")
+        } catch let error {
+            print("Error: \(error.localizedDescription)")
+        }
+    }
 }
