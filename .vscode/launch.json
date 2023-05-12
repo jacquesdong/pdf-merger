@@ -1,0 +1,28 @@
+{
+    "configurations": [
+        {
+            "type": "lldb",
+            "request": "launch",
+            "sourceLanguages": [
+                "swift"
+            ],
+            "name": "Debug",
+            "program": "${workspaceFolder:merge}/.build/debug/merge",
+            "args": [],
+            "cwd": "${workspaceFolder:merge}",
+            "preLaunchTask": "swift: Build Debug merge"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "sourceLanguages": [
+                "swift"
+            ],
+            "name": "Release",
+            "program": "${workspaceFolder:merge}/.build/release/merge",
+            "args": [],
+            "cwd": "${workspaceFolder:merge}",
+            "preLaunchTask": "swift: Build Release merge"
+        }
+    ]
+}
